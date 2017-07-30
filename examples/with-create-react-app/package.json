@@ -4,6 +4,7 @@
   "private": true,
   "description": "An example usage of react-md and create-react-app.",
   "dependencies": {
+    "firebase": "^4.2.0",
     "node-sass": "^4.5.2",
     "npm-run-all": "^4.0.2",
     "react": "^15.5.4",
@@ -11,6 +12,8 @@
     "react-addons-transition-group": "^15.5.2",
     "react-dom": "^15.5.4",
     "react-md": "*",
+    "react-redux": "^5.0.5",
+    "serve": "^6.0.3",
     "webfontloader": "^1.6.27"
   },
   "devDependencies": {
