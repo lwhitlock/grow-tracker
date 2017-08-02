@@ -11,8 +11,10 @@
     "react-addons-css-transition-group": "^15.5.2",
     "react-addons-transition-group": "^15.5.2",
     "react-dom": "^15.5.4",
+    "react-google-charts": "^1.5.5",
     "react-md": "*",
     "react-redux": "^5.0.5",
+    "recharts": "^1.0.0-alpha.2",
     "serve": "^6.0.3",
     "webfontloader": "^1.6.27"
   },

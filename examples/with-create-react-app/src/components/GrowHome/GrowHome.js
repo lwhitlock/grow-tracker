@@ -15,7 +15,7 @@ class GrowHome extends Component {
   super(props);
 
   this.state = { visible: false, pageX: null, pageY: null};
-  this.state = { messages: [] };
+  this.state = { messages: [], grow: [] };
 }
 
 state = {
@@ -32,6 +32,17 @@ componentWillMount(){
     /* Update React state when message is added at Firebase Database */
     let message = { text: snapshot.val(), id: snapshot.key };
     this.setState({ messages: [message].concat(this.state.messages) });
+  })
+
+  let growsRef = fire.database().ref('grow/0').orderByKey().limitToLast(100);
+  growsRef.on('child_added', snapshot => {
+    /* Update React state when message is added at Firebase Database */
+    let grow = { value: snapshot.val(), key: snapshot.key };
+    console.log("grow");
+    console.log(grow);
+    this.setState({ grow: [grow].concat(this.state.grow) });
+    console.log('this.state.grow')
+    console.log(this.state.grow)
   })
 
 

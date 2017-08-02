@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './Temp.css'
+import { Chart } from 'react-google-charts';
 import Card from 'react-md/lib/Cards/Card';
 import CardTitle from 'react-md/lib/Cards/CardTitle';
 import CardActions from 'react-md/lib/Cards/CardActions';
@@ -18,6 +19,23 @@ class Temp extends Component {
     this.state = {
       visible: false,
       position: 'left',
+      options: {
+        legend: 'none',
+        curveType: 'function',
+        series: {
+          0: {
+            color:  '388e3c'
+          }
+        }
+      },
+      data: [
+        ['Year', 'Temperature', 'Humidity'],
+        ['06',  86,      50],
+        ['09',  86,      71],
+        ['14',  79,       21],
+        ['16',  82,      16],
+        ['17',  79,      16],
+      ]
     };
 
     this._toggleLeft = this._toggleLeft.bind(this);
@@ -44,6 +62,7 @@ class Temp extends Component {
   }
 
   render() {
+
     const left = this.state.position === 'left';
 const close = <Button icon onClick={this._closeDrawer}>{left ? 'arrow_back' : 'arrow_back'}</Button>;
 const header = (
@@ -62,9 +81,15 @@ const header = (
         className="gt-temp"
       >
         <CardTitle title="Temperature" />
-        <IconSeparator label="Chart Goes Here" iconBefore>
-          <FontIcon>timeline</FontIcon>
-        </IconSeparator>
+        <Chart
+          chartType="ComboChart"
+          data={this.state.data}
+          options={this.state.options}
+          graph_id="temp-chart"
+          width="100%"
+          height="30vh"
+
+        />
         <CardActions className="md-divider-border md-divider-border--top">
           <Button flat label="Details" secondary         onClick={() => {
                     this._toggleRight();
