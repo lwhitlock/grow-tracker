@@ -1,0 +1,13 @@
+.HorizontalScroll {
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: visible;
+  padding: 1.5rem .5rem;
+  align-items: stretch;
+  -webkit-overflow-scrolling: touch; }
+
+::-webkit-scrollbar {
+  display: none; }
+
+::-webkit-scrollbar-thumb {
+  display: none; }

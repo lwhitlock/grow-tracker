@@ -1,0 +1,15 @@
+.gt-plant-preview{
+  width: 12rem;
+  height: 12rem;
+  margin-right: .5rem
+}
+
+.gt-plant-preview .md-media{
+  width: 100%;
+  height: 100%;
+}
+
+.gt-plant-preview .md-media-overlay{
+  height: 100%;
+  background-color: $md-primary-color;
+}
