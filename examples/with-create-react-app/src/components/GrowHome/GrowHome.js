@@ -12,26 +12,34 @@ import Toolbar from 'react-md/lib/Toolbars';
 
 class GrowHome extends Component {
   constructor(props) {
-  super(props);
+    super(props);
 
-  this.state = { visible: false, growId: 0, messages: [], grow: [], plants: [] };
-}
+    this.state = {
+      visible: false,
+      growId: 0,
+      messages: [],
+      grow: [],
+      plants: []
+    };
+  }
+
+
 
 
 
 
 componentWillMount(){
-  /* Create reference to messages in Firebase Database */
+  /* Create reference to messages in fire Database */
   let messagesRef = fire.database().ref('grow/1/plants').orderByKey().limitToLast(100);
   messagesRef.on('child_added', snapshot => {
-    /* Update React state when message is added at Firebase Database */
+    /* Update React state when message is added at fire Database */
     let message = { text: snapshot.val(), id: snapshot.key };
     this.setState({ messages: [message].concat(this.state.messages) });
   })
 
   let growsRef = fire.database().ref('grow').orderByKey().limitToLast(100);
   growsRef.on('child_added', snapshot => {
-    /* Update React state when message is added at Firebase Database */
+    /* Update React state when message is added at fire Database */
     let grow = { value: snapshot.val(), key: snapshot.key };
 
     this.setState({ grow: [grow].concat(this.state.grow) });
@@ -39,7 +47,11 @@ componentWillMount(){
   })
 
 
+
 }
+
+
+
 
 
   render() {
