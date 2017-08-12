@@ -14,14 +14,9 @@ class GrowHome extends Component {
   constructor(props) {
   super(props);
 
-  this.state = { visible: false, pageX: null, pageY: null};
-  this.state = { messages: [], grow: [] };
+  this.state = { visible: false, growId: 0, messages: [], grow: [], plants: [] };
 }
 
-state = {
-  growId: 1,
-  plants: []
-}
 
 
 
@@ -34,15 +29,13 @@ componentWillMount(){
     this.setState({ messages: [message].concat(this.state.messages) });
   })
 
-  let growsRef = fire.database().ref('grow/0').orderByKey().limitToLast(100);
+  let growsRef = fire.database().ref('grow').orderByKey().limitToLast(100);
   growsRef.on('child_added', snapshot => {
     /* Update React state when message is added at Firebase Database */
     let grow = { value: snapshot.val(), key: snapshot.key };
-    console.log("grow");
-    console.log(grow);
+
     this.setState({ grow: [grow].concat(this.state.grow) });
-    console.log('this.state.grow')
-    console.log(this.state.grow)
+
   })
 
 
@@ -53,13 +46,15 @@ componentWillMount(){
 
     return(
       <div>
-        <Temp />
+        <Temp dataset={this.state.grow[this.state.growId]}/>
 
         <HorizontalScroll title={ "Plants" }>
-          { /* Render the list of plants */
-            this.state.messages.map( message => <PlantPreview key={message.id}{...message} /> )
+          {
+            this.state.grow.map( grow => <PlantPreview key={grow.id}{...grow} /> )
+
           }
         </HorizontalScroll >
+
 
         <Add />
       </div>

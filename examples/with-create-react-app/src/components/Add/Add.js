@@ -46,7 +46,7 @@ class Add extends Component {
 
   addDataPoint(e){
     console.log(this.state.date.today)
-    fire.database().ref('grow/1/data-points').push({
+    fire.database().ref('grow/1/recordings').push({
       humidity: this.state.humidity,
       temperature: this.state.temp,
       date: this.state.date.today
@@ -69,7 +69,7 @@ class Add extends Component {
       </Button>
 
       <Dialog
-        id="data-points"
+        id="recordings"
         {...this.state}
         title="Add Data"
         onHide={this._closeDialog}

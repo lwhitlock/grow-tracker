@@ -19,6 +19,7 @@ class Temp extends Component {
     this.state = {
       visible: false,
       position: 'left',
+      datatest: ['Date', 'Humidity', 'Temperature'],
       options: {
         legend: 'none',
         curveType: 'function',
@@ -37,7 +38,6 @@ class Temp extends Component {
         ['17',  79,      16],
       ]
     };
-
     this._toggleLeft = this._toggleLeft.bind(this);
     this._toggleRight = this._toggleRight.bind(this);
     this._closeDrawer = this._closeDrawer.bind(this);
@@ -61,19 +61,22 @@ class Temp extends Component {
     this.setState({ visible: !this.state.visible, position: 'right' });
   }
 
+  componentWillMount(){
+  console.log(this.props.dataset)
+  }
   render() {
 
     const left = this.state.position === 'left';
-const close = <Button icon onClick={this._closeDrawer}>{left ? 'arrow_back' : 'arrow_back'}</Button>;
-const header = (
-  <Toolbar
-    colored
-    title={"Temperature"}
-    nav={left ? null : close}
-    actions={left ? close : null}
-    className="md-divider-border md-divider-border--bottom"
-  />
-);
+    const close = <Button icon onClick={this._closeDrawer}>{left ? 'arrow_back' : 'arrow_back'}</Button>;
+  const header = (
+    <Toolbar
+      colored
+      title={"Temperature"}
+      nav={left ? null : close}
+      actions={left ? close : null}
+      className="md-divider-border md-divider-border--bottom"
+    />
+  );
 
     return(
       <section className="card-wrapper">
