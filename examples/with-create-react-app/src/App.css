@@ -9,9 +9,8 @@
   background-color: #222;
   height: 150px;
   padding: 20px; }
-
-.App-header h2 {
-  color: #fff; }
+  .App-header h2 {
+    color: #fff; }
 
 .App-intro {
   font-size: large; }

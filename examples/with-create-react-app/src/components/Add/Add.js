@@ -3,7 +3,6 @@ import fire from '../../fire';
 
 import Button from 'react-md/lib/Buttons/Button';
 import Dialog from 'react-md/lib/Dialogs';
-import Toolbar from 'react-md/lib/Toolbars';
 import Slider from 'react-md/lib/Sliders';
 
 const today = new Date().toJSON();
@@ -12,28 +11,13 @@ class Add extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { visible: false, pageX: null, pageY: null, temp: 78, humidity: 60, date: {today}};
-    this._openDialog = this._openDialog.bind(this);
-    this._closeDialog = this._closeDialog.bind(this);
+    this.state = { visible: false, temp: 78, humidity: 60, date: {today}};
+
     this._updateTemp = this._updateTemp.bind(this);
     this._updateHumidity = this._updateHumidity.bind(this);
   }
 
 
-  _openDialog(e) {
-    let { pageX, pageY } = e;
-    if (e.changedTouches) {
-      const [touch] = e.changedTouches;
-      pageX = touch.pageX;
-      pageY = touch.pageY;
-    }
-
-    this.setState({ visible: true, pageX, pageY });
-  }
-
-  _closeDialog() {
-    this.setState({ visible: false });
-  }
 
   _updateTemp(temp) {
     this.setState({ temp });
@@ -54,8 +38,7 @@ class Add extends Component {
     this._closeDialog();
   }
   render() {
-    const nav = <Button icon onClick={this._closeDialog}>close</Button>;
-    const action = <Button flat label="Save" onClick={this.addDataPoint.bind(this)} />;
+
 
     return (
       <div>

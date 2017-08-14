@@ -7,9 +7,9 @@ var config = { /* COPY THE ACTUAL CONFIG FROM FIREBASE CONSOLE */
   storageBucket: "grow-43b16.appspot.com",
   messagingSenderId: "56524211178"
 };
-var fire = firebase.initializeApp(config);
+firebase.initializeApp(config);
 
-export const ref = firebase.database().ref()
+export const db = firebase.database()
 export const firebaseAuth = firebase.auth
 
-export default fire;
+export default firebase;
